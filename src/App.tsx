@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
