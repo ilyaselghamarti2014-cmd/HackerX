@@ -21,10 +21,10 @@ function InstallTheTool() {
 
         <a
           className="install-link"
-          href="/HackerX.zip"
+          href="/HakerX.zip"
           download
         >
-          Download HackerX →
+          Download HakerX 
         </a>
 
       </div>
