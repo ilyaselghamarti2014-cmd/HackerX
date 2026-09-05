@@ -26,9 +26,9 @@ function Informations() {
         <ul className="attack-list">
           <li>ARP Spoofing</li>
           <li>Packet Sniffing</li>
-          <li>DoS Testing</li>
-          <li>WPS Security Testing</li>
-          <li>Deauthentication Testing</li>
+          <li>DoS Attack</li>
+          <li>Host scanning</li>
+          <li>Deauthentication Attack</li>
         </ul>
       </section>
 
