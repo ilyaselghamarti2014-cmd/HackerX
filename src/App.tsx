@@ -12,6 +12,7 @@ function App() {
         this tool to help you in your cyber security journey.
         This tool is designed to help you learn cyber security.
         I hope you find this tool useful and enjoy using it!
+        hi abdou l 9oudous
       </p>
 
       <Link className="learn-more" to="/informations">
